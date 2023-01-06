@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Josefin+Sans&family=Montserrat:wght@600&family=Oswald&family=Poppins:wght@800&display=swap");
+:root {
+  --clr: rgb(241, 239, 239);
+  --bg: #000;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  overflow-y: scroll;
+  background-color: var(--bg);
+  width: 100vw;
+  overflow-x: hidden;
+  height: 200vh;
+  color: var(--clr);
+  font-family: "Poppins", sans-serif;
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+#wrapper {
+  margin-top: 20px;
+}
+#wrapper .card {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.bg-theme {
+  background-color: var(--clr);
+  color: var(--bg);
+}
+.mt-1 {
+  margin-top: 10px;
+}
+.full {
+  width: 24rem;
+}
+.Featured {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  column-gap: 20rem;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+.Featured img {
+  padding: 80px;
+  border-radius: 29px;
+}
+.Featured .card {
+  margin-left: 50%;
+}
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--p));
+  border-radius: 8px;
+}
