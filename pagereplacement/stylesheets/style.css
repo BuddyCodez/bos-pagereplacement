@@ -13,9 +13,26 @@ body {
   background-color: var(--bg);
   width: 100vw;
   overflow-x: hidden;
-  height: 200vh;
+  height: 100%;
   color: var(--clr);
   font-family: "Poppins", sans-serif;
+}
+#app2 {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg);
+}
+.example {
+  width: 75vw;
+  height: 70vh;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 #app {
   display: flex;
@@ -73,3 +90,4 @@ body {
   background: hsl(var(--p));
   border-radius: 8px;
 }
+
