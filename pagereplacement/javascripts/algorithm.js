@@ -14,7 +14,6 @@ async function Calculate() {
   let capacity = document.getElementById("capacity").value;
   let referenceString = document.getElementById("rs").value;
   if(!capacity || !referenceString) return alert("Please fill all the fields");
-  document.getElementById("app").style.height = "200vh";
   let referenceStringArray = referenceString.split(" ").filter(item => item !== '');
   console.log(referenceStringArray)
   let pageFaultsFifo = 0;
@@ -29,6 +28,18 @@ async function Calculate() {
   let missRateLru = (missLru / referenceStringArray.length) * 100;
   let hitRateFifo = (hitFifo / referenceStringArray.length) * 100;
   let hitRateLru = (hitLru / referenceStringArray.length) * 100;
+  let pageFaultsLifo = 0;
+  pageFaultsLifo = await eel.Algorithm('lifo', capacity, referenceStringArray)();
+  let missLifo = pageFaultsLifo[0];
+  let hitLifo = referenceStringArray.length - pageFaultsLifo[0];
+  let missRateLifo = (missLifo / referenceStringArray.length) * 100;
+  let hitRateLifo = (hitLifo / referenceStringArray.length) * 100;
+  document.getElementById("LifoPageFaults").innerHTML = pageFaultsLifo[0];
+  document.getElementById("LifoPageHits").innerHTML = referenceStringArray.length - pageFaultsLifo[0];
+  document.getElementById("LifoPageFaultRatio").innerHTML = missRateLifo.toFixed(2) + "%";
+  document.getElementById("LifoPageHitRatio").innerHTML = hitRateLifo.toFixed(2) + "%";
+  document.getElementById("LifoImg").src = pageFaultsLifo[1];
+
   document.getElementById("fifoPageFaults").innerHTML = pageFaultsFifo[0];
   document.getElementById("fifoPageHits").innerHTML = referenceStringArray.length - pageFaultsFifo[0];
   document.getElementById("FifoImg").src = pageFaultsFifo[1];
@@ -39,7 +50,7 @@ async function Calculate() {
   document.getElementById("lruPageFaultRatio").innerHTML = missRateLru.toFixed(2) + "%";
   document.getElementById("lruPageHitRatio").innerHTML = hitRateLru.toFixed(2) + "%";
   document.getElementById("LruImg").src = pageFaultsLru[1];
-  document.querySelectorAll("#holder").forEach(item => {
+  document.querySelectorAll(".holder").forEach(item => {
     item.style.display = "flex";
   });
 

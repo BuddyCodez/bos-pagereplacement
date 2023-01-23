@@ -1,7 +1,21 @@
 from queue import Queue
+import queue
 import speech_recognition as sr
 from quickchart import QuickChart
 class Algorithm:
+
+    def  LIFO(self, pages,  frames):
+        pages, frames = self.convertThings(pages, frames)
+        q = queue.LifoQueue()
+        page_faults = 0
+        for  page in pages:
+            if  page not in q.queue:
+                if  len(q.queue) == frames:
+                    q.get()
+                q.put(page)
+                page_faults += 1
+        print("Lifo Page Faults: ", page_faults)
+        return  page_faults, self.chart(page_faults, pages, name="LIFO")
     def LRU(self, capacity, pageList):
         pageList, capacity = self.convertThings(pageList, capacity)
         s = []
@@ -47,6 +61,7 @@ class Algorithm:
                     indexes.put(pageList[i])
                     pageFaults += 1
         return pageFaults, self.chart(pageFaults, pageList)
+    
     def chart(self, pageFaults, faults, name="FIFO"):
         qc = QuickChart()
         qc.width = 500

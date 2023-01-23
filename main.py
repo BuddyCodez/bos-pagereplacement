@@ -10,6 +10,8 @@ def Algorithm(type, capacity,pageList):
     print(type,capacity,pageList)
     if type == "fifo":
         return Brain.Algorithm().FIFO(capacity=capacity, pageList=pageList)   
+    elif type == "lifo":
+        return Brain.Algorithm().LIFO(frames=capacity, pages=pageList)
     else:
         return Brain.Algorithm().LRU(capacity=capacity, pageList=pageList)
 
