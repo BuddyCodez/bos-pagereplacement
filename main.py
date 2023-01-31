@@ -1,5 +1,4 @@
 import eel
-import pyttsx3
 import brain as Brain
 # ! imported eel module for the gui.
 
@@ -15,10 +14,7 @@ def Algorithm(type, capacity,pageList):
     else:
         return Brain.Algorithm().LRU(capacity=capacity, pageList=pageList)
 
-@eel.expose
-def takeCommand():
-    cmd = Brain.VoiceRecognize().takeCommand()
-    return cmd
+
     
 
 # ! eel.start('index.html') is used to start the GUI.
