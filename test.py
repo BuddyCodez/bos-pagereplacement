@@ -15,7 +15,8 @@ def mru(pages, frames):
                     q.queue.remove(q.queue[recent])
             q.put(page)
             page_faults += 1
+            
     return page_faults
 
-li = [1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5]
+li = [1, 2, 1, 3, 1, 4 ]
 print(mru(li, 3))
