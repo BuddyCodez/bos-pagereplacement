@@ -279,11 +279,42 @@
                         </div>
                     </div>
                 </div>
+                <div class="card w-96 bg-base-100 shadow-xl" style="height: 490px;">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="MruImg" id="MruImg" /></figure>
+                    <div class="card-body">
+                        <h2 class="card-title">Most Recently Used</h2>
+                        <p>The most recently used (MRU) page replacement algorithm is a simple page replacement algorithm that replaces the page
+                        that was most recently used. In other words, the page that has not been accessed for the longest time is selected for
+                        replacement. The MRU algorithm operates on the principle that the page that has not been used for the longest time is
+                        the most likely to be used in the near future. MRU is not widely used in practice due to its poor performance in
+                        comparison to other page replacement algorithms, such as the Least Recently Used (LRU) algorithm.</p>
+                        <div class="card-actions justify-center">
+                            <p class="text-primary text-start w-auto">
+                                Page Faults:&nbsp; <span id="MruPageFaults" class="text-white">
+                                    0
+                                </span>
+                            </p>
+                            <p class="text-primary text-start">
+                                PageHits: &nbsp; <span id="MruPageHits" class="text-white text-bolder">
+                                    0
+                                </span>
+                            </p>
+                            <p class="text-primary text-primary">
+                                Page Fault Ratio: &nbsp; <span id="MruPageFaultRatio" class="text-white text-bolder">
+                                    0
+                                </span>
+                            <p class="text-primary text-primary">
+                                Page Hit Ratio: &nbsp; <span id="MruPageHitRatio" class="text-white text-bolder">
+                                    0
+                                </span>
+                        </div>
+                    </div>
+                </div>
                 <div class="full">
                     <h1 class="text-primary">Conclusion for LIFO:</h1>
-                    LIFO page replacement algorithm is definitely not the best page replacement algorithm to use
-                    practically.It replaces the last page that arrived in the main memory.
-                    so it is not a good choice for a system that has a large number of incoming pages.
+                In conclusion, MRU is a basic page replacement algorithm that replaces the page that was most recently used. Although
+                it operates on a straightforward principle, it has poor performance compared to other page replacement algorithms, such
+                as LRU. As a result, MRU is not widely used in practice.
 
                 </div>
             </div>

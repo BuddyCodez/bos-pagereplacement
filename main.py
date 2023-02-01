@@ -11,6 +11,8 @@ def Algorithm(type, capacity,pageList):
         return Brain.Algorithm().FIFO(capacity=capacity, pageList=pageList)   
     elif type == "lifo":
         return Brain.Algorithm().LIFO(frames=capacity, pages=pageList)
+    elif type == "mru":
+        return Brain.Algorithm().MRU(frames=capacity, pages=pageList)
     else:
         return Brain.Algorithm().LRU(capacity=capacity, pageList=pageList)
 

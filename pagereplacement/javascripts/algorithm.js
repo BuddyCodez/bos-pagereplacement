@@ -34,11 +34,22 @@ async function Calculate() {
   let hitLifo = referenceStringArray.length - pageFaultsLifo[0];
   let missRateLifo = (missLifo / referenceStringArray.length) * 100;
   let hitRateLifo = (hitLifo / referenceStringArray.length) * 100;
+  let pageFaultsMru = 0;
+  pageFaultsMru = await eel.Algorithm('mru', capacity, referenceStringArray)();
+  let missMru = pageFaultsMru[0];
+  let hitMru = referenceStringArray.length - pageFaultsMru[0];
+  let missRateMru = (missMru / referenceStringArray.length) * 100;
+  let hitRateMru = (hitMru / referenceStringArray.length) * 100;
   document.getElementById("LifoPageFaults").innerHTML = pageFaultsLifo[0];
   document.getElementById("LifoPageHits").innerHTML = referenceStringArray.length - pageFaultsLifo[0];
   document.getElementById("LifoPageFaultRatio").innerHTML = missRateLifo.toFixed(2) + "%";
   document.getElementById("LifoPageHitRatio").innerHTML = hitRateLifo.toFixed(2) + "%";
   document.getElementById("LifoImg").src = pageFaultsLifo[1];
+  document.getElementById("MruPageFaults").innerHTML = pageFaultsMru[0];
+  document.getElementById("MruPageHits").innerHTML = referenceStringArray.length - pageFaultsMru[0];
+  document.getElementById("MruPageFaultRatio").innerHTML = missRateMru.toFixed(2) + "%";
+  document.getElementById("MruPageHitRatio").innerHTML = hitRateMru.toFixed(2) + "%";
+  document.getElementById("MruImg").src = pageFaultsMru[1];
 
   document.getElementById("fifoPageFaults").innerHTML = pageFaultsFifo[0];
   document.getElementById("fifoPageHits").innerHTML = referenceStringArray.length - pageFaultsFifo[0];
