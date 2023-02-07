@@ -20,4 +20,4 @@ def Algorithm(type, capacity,pageList):
     
 
 # ! eel.start('index.html') is used to start the GUI.
-eel.start('index.html', mode='firefox')
+eel.start('index.html', mode='default',cmdline_args=['--kiosk'] )

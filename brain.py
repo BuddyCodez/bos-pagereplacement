@@ -35,29 +35,53 @@ class Algorithm:
         return  page_faults, self.chart(page_faults, pages, name="LIFO")
     def LRU(self, capacity, pageList):
         pageList, capacity = self.convertThings(pageList, capacity)
-        s = []
-        faults = []
-        pageFaults = 0
-        for i in pageList:
-            #  ? If i is not present in currentPages list
-            if i not in s:
-                # ! Check if the list can hold equal pages
-                if(len(s) == capacity):
-                    s.remove(s[0])
-                    s.append(i)
-                else:
-                    s.append(i)
-                # ! Increment Page faults
-                pageFaults +=1
-                faults.append(i)
-            # ! If page is already there in 
-            # ! currentPages i.e in Main
+        # To represent set of current pages. We use
+        # an unordered_set so that we quickly check
+        # if a page is present in set or not
+        s = set()
+        # To store least recently used indexes
+        # of pages.
+        indexes = {}
+        # Start from initial page
+        page_faults = 0
+        # list na traverse karav use thase
+        for i in range(len(pageList)):
+            # Check if the set can hold more pages
+            if len(s) < capacity:
+                # Insert it into set if not present
+                # already which represents page fault
+                if pageList[i] not in s:
+                    s.add(pageList[i])
+                    # increment page fault
+                    page_faults += 1
+                # Store the recently used index of
+                # each page
+                indexes[pageList[i]] = i
+            # If the set is full then need to perform lru
+            # i.e. remove the least recently used page
+            # and insert the current page
             else:
-                # ? Remove previous index of current page
-                s.remove(i)
-            # ? Now append it, at last index
-                s.append(i)
-        return pageFaults, self.chart(pageFaults, pageList, name="LRU")
+                # Check if current page is not already
+                # present in the set
+                if pageList[i] not in s:
+                    # Find the least recently used pageList
+                    # that is present in the set
+                    lru = float('inf')
+                    for page in s:
+                        if indexes[page] < lru:
+                            lru = indexes[page]
+                            val = page
+                    # Remove the indexes page
+                    s.remove(val)
+                    # insert the current page
+                    s.add(pageList[i])
+                    # increment page fault
+                    page_faults += 1
+                # Update the current page index
+                indexes[pageList[i]] = i
+        return page_faults, self.chart(page_faults, pageList, name="LRU")
+ 
+
     def FIFO(self,capacity, pageList):
         pageList, capacity = self.convertThings(pageList, capacity)
         s = set()
